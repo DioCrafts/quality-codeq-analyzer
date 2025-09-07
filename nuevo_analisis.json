@@ -1,0 +1,4380 @@
+{
+  "metadata": {
+    "tool": "CodeQ",
+    "version": "2.0.0",
+    "timestamp": "2025-09-07T21:03:43.055993",
+    "repository_path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte",
+    "scan_duration_seconds": 0,
+    "platform": {
+      "system": "Darwin",
+      "python_version": "3.11.13",
+      "cpu_count": 8,
+      "memory_gb": 8.0
+    }
+  },
+  "summary": {
+    "overall_score": 85.0,
+    "maintainability_index": 85.0,
+    "technical_debt_hours": 0.0,
+    "quality_rating": "VERY GOOD",
+    "risk_level": "LOW",
+    "total_files": 187,
+    "total_lines": 43485,
+    "languages_detected": [
+      "javascript",
+      "python"
+    ]
+  },
+  "ml_predictions": {
+    "bug_likelihood": {},
+    "quality_forecast": {},
+    "maintainability_prediction": {},
+    "anomaly_detection": {},
+    "overall_assessment": {}
+  },
+  "detailed_metrics": {
+    "complexity_metrics": {
+      "avg_cyclomatic_complexity": 0,
+      "max_cyclomatic_complexity": 0,
+      "cognitive_complexity_avg": 0,
+      "halstead_metrics": {
+        "avg_volume": 0,
+        "avg_difficulty": 0,
+        "avg_effort": 0
+      }
+    },
+    "size_metrics": {
+      "total_files": 187,
+      "total_lines_of_code": 43485,
+      "avg_file_size": 232.54010695187165,
+      "total_functions": 0,
+      "total_classes": 0
+    },
+    "quality_metrics": {
+      "maintainability_index": 85.0,
+      "technical_debt_hours": 0.0,
+      "test_coverage_avg": 0,
+      "documentation_coverage": 0,
+      "duplication_percentage": 0
+    },
+    "coupling_metrics": {
+      "avg_coupling_between_objects": 0,
+      "inheritance_depth_avg": 0,
+      "lack_of_cohesion_avg": 0
+    }
+  },
+  "quality_analysis": {
+    "quality_band": "A",
+    "quality_description": "Excellent maintainability",
+    "maintainability_assessment": {
+      "score": 85.0,
+      "band": "A",
+      "description": "Excellent maintainability"
+    },
+    "technical_debt_analysis": {
+      "total_hours": 0.0,
+      "cost_estimation": 0.0,
+      "severity_level": "LOW"
+    },
+    "code_health_indicators": {
+      "complexity_risk": "LOW",
+      "test_coverage_status": "POOR",
+      "documentation_status": "POOR"
+    }
+  },
+  "recommendations": {
+    "immediate_actions": [],
+    "short_term_goals": [
+      {
+        "action": "Increase test coverage",
+        "target": "80%",
+        "current": "0.0%",
+        "description": "Aim for at least 80% test coverage"
+      }
+    ],
+    "long_term_improvements": [],
+    "priority_level": "LOW"
+  },
+  "performance_stats": {
+    "analysis_performance": {
+      "scan_duration_seconds": 0,
+      "files_per_second": 187.0,
+      "lines_per_second": 43485.0
+    },
+    "code_metrics_distribution": {
+      "complexity_distribution": {
+        "min": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0,
+        "std": 0
+      },
+      "size_distribution": {
+        "min": 0,
+        "max": 0,
+        "mean": 0,
+        "median": 0,
+        "std": 0
+      },
+      "quality_distribution": {
+        "min": 85.0,
+        "max": 85.0,
+        "mean": 85.0,
+        "median": 85.0,
+        "std": 0.0,
+        "quartiles": {
+          "25th": 85.0,
+          "75th": 85.0
+        }
+      }
+    },
+    "resource_usage": {
+      "estimated_analysis_complexity": "LOW",
+      "parallelization_efficiency": 1.0
+    }
+  },
+  "code_patterns": {
+    "design_patterns": {
+      "detected": [],
+      "confidence": 0.0
+    },
+    "anti_patterns": {
+      "god_objects": 0,
+      "long_methods": 0,
+      "duplicate_code_blocks": 0
+    },
+    "code_style": {
+      "consistent_naming": 0.0,
+      "proper_documentation": 0.0,
+      "modular_design": 0.0
+    }
+  },
+  "detailed_findings": [
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/sync_versions.py",
+        "start_line": 72,
+        "end_line": 72,
+        "start_col": 17,
+        "end_col": 58
+      },
+      "snippet": " 70: \n 71:             if dep_name in locked_versions:\n 72:                 locked_version = locked_versions[dep_name]\n 73:                 if clean_version != locked_version:\n 74:                     dep_config[\"version\"] = locked_version\n 75:                     print(",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "bug_2",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/sync_versions.py",
+        "start_line": 101,
+        "end_line": 102,
+        "start_col": 4,
+        "end_col": 32
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_3",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/sync_versions.py",
+        "start_line": 101,
+        "end_line": 102,
+        "start_col": 4,
+        "end_col": 32
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 109,
+        "end_line": 109,
+        "start_col": 17,
+        "end_col": 25
+      },
+      "snippet": "107:         (\n108:             [\n109:                 \"poetry\",\n110:                 \"run\",\n111:                 \"python\",\n112:                 \"-c\",",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '13' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 39,
+        "end_line": 39,
+        "start_col": 30,
+        "end_col": 32
+      },
+      "snippet": " 39:         (\"python3\", \"Python 3.13+\"),",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '587' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 179,
+        "end_line": 179,
+        "start_col": 16,
+        "end_col": 19
+      },
+      "snippet": "179: EMAIL_SMTP_PORT=587",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 195,
+        "end_line": 195,
+        "start_col": 23,
+        "end_col": 25
+      },
+      "snippet": "195: ALERT_INTERVAL_MINUTES=30",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 196,
+        "end_line": 196,
+        "start_col": 29,
+        "end_col": 31
+      },
+      "snippet": "196: MARKET_DATA_INTERVAL_MINUTES=30",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_9",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 26,
+        "end_line": 28,
+        "start_col": 4,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_10",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/setup.py",
+        "start_line": 26,
+        "end_line": 28,
+        "start_col": 4,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 236,
+        "end_line": 236,
+        "start_col": 17,
+        "end_col": 47
+      },
+      "snippet": "234: \n235:             for layer, subdirs in required_structure.items():\n236:                 layer_path = module_dir / layer\n237:                 if layer_path.exists():\n238:                     print(f\"  ✅ {layer}/ existe\")\n239: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '80' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 204,
+        "end_line": 204,
+        "start_col": 30,
+        "end_col": 32
+      },
+      "snippet": "204:             \"--cov-fail-under=80\",",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '90' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 310,
+        "end_line": 310,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "310:     if score >= 90:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '80' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 312,
+        "end_line": 312,
+        "start_col": 18,
+        "end_col": 20
+      },
+      "snippet": "312:     elif score >= 80:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 314,
+        "end_line": 314,
+        "start_col": 18,
+        "end_col": 20
+      },
+      "snippet": "314:     elif score >= 70:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_16",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 27,
+        "end_line": 33,
+        "start_col": 4,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_17",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tools/scripts/quality.py",
+        "start_line": 27,
+        "end_line": 33,
+        "start_col": 4,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_18",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Nasdaq/separador.py",
+        "start_line": 12,
+        "end_line": 14,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_19",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Nasdaq/separador.py",
+        "start_line": 12,
+        "end_line": 14,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 29,
+        "end_line": 29,
+        "start_col": 17,
+        "end_col": 40
+      },
+      "snippet": " 27:         with open(output_path, \"w\") as f:\n 28:             for ticker in tickers:\n 29:                 f.write(\"%s\\n\" % ticker)\n 30:     except Exception as e:\n 31:         print(f\"Error al escribir en el archivo: {e}\")\n 32: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '09' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 36,
+        "end_line": 36,
+        "start_col": 40,
+        "end_col": 42
+      },
+      "snippet": " 36:     csv_path = \"ASX_Listed_Companies_21-09-2023_09-18-57_AEST.csv\"",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_22",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_23",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 30,
+        "end_line": 31,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_24",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_25",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Oceania/separador.py",
+        "start_line": 30,
+        "end_line": 31,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_26",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/NYSE/separador.py",
+        "start_line": 15,
+        "end_line": 17,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_27",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/NYSE/separador.py",
+        "start_line": 15,
+        "end_line": 17,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '404' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Euronext/separador.py",
+        "start_line": 15,
+        "end_line": 15,
+        "start_col": 12,
+        "end_col": 15
+      },
+      "snippet": " 15:         if \"404\" in error_message:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '404' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Euronext/separador.py",
+        "start_line": 17,
+        "end_line": 17,
+        "start_col": 59,
+        "end_col": 62
+      },
+      "snippet": " 17:             print(f\"Ticker no encontrado en Yahoo Finance (404): {ticker}\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '08' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Euronext/separador.py",
+        "start_line": 24,
+        "end_line": 24,
+        "start_col": 43,
+        "end_col": 45
+      },
+      "snippet": " 24: df = pd.read_excel(\"Euronext_Equities_2023-08-13.xlsx\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_31",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Euronext/separador.py",
+        "start_line": 13,
+        "end_line": 20,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_32",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Euronext/separador.py",
+        "start_line": 13,
+        "end_line": 20,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/bse_separador.py",
+        "start_line": 29,
+        "end_line": 29,
+        "start_col": 17,
+        "end_col": 40
+      },
+      "snippet": " 27:         with open(output_path, \"w\") as f:\n 28:             for ticker in tickers:\n 29:                 f.write(\"%s\\n\" % ticker)\n 30:     except Exception as e:\n 31:         print(f\"Error al escribir en el archivo: {e}\")\n 32: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "bug_34",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/bse_separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_35",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/bse_separador.py",
+        "start_line": 30,
+        "end_line": 31,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_36",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/bse_separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_37",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/bse_separador.py",
+        "start_line": 30,
+        "end_line": 31,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_38",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/combinador_resultados.py",
+        "start_line": 20,
+        "end_line": 22,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_39",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/combinador_resultados.py",
+        "start_line": 20,
+        "end_line": 22,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/nse_separador.py",
+        "start_line": 33,
+        "end_line": 33,
+        "start_col": 17,
+        "end_col": 40
+      },
+      "snippet": " 31:         with open(output_path, \"w\") as f:\n 32:             for ticker in tickers:\n 33:                 f.write(\"%s\\n\" % ticker)\n 34:     except Exception as e:\n 35:         print(f\"Error al escribir en el archivo: {e}\")\n 36: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "bug_41",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/nse_separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_42",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/nse_separador.py",
+        "start_line": 34,
+        "end_line": 35,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_43",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/nse_separador.py",
+        "start_line": 11,
+        "end_line": 13,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_44",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/India/nse_separador.py",
+        "start_line": 34,
+        "end_line": 35,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 55,
+        "end_line": 55,
+        "start_col": 17,
+        "end_col": 40
+      },
+      "snippet": " 53:         with open(hk_file_path, \"w\") as f:\n 54:             for ticker in hk_tickers_with_market_cap:\n 55:                 f.write(\"%s\\n\" % ticker)\n 56:         print(f\"Tickers con market cap escritos en: {hk_file_path}\")\n 57:     except Exception as e:\n 58:         print(f\"Error al escribir en el archivo: {e}\")",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "bug_46",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 13,
+        "end_line": 15,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_47",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 23,
+        "end_line": 25,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_48",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 57,
+        "end_line": 58,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_49",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 13,
+        "end_line": 15,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_50",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 23,
+        "end_line": 25,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_51",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Hong-Kong/separador.py",
+        "start_line": 57,
+        "end_line": 58,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 88,
+        "end_line": 88,
+        "start_col": 17,
+        "end_col": 82
+      },
+      "snippet": " 86:             print(f\"Error obteniendo el nombre para {ticker}: {e}\")\n 87:             names[ticker] = (\n 88:                 ticker  # Usar el ticker como nombre temporalmente si hay un error\n 89:             )\n 90:     return names\n 91: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '255' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 34,
+        "end_line": 34,
+        "start_col": 33,
+        "end_col": 36
+      },
+      "snippet": " 34:     company_name = Column(String(255))",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '50' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 37,
+        "end_line": 37,
+        "start_col": 32,
+        "end_col": 34
+      },
+      "snippet": " 37:     market_name = Column(String(50))",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '50' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 44,
+        "end_line": 44,
+        "start_col": 35,
+        "end_col": 37
+      },
+      "snippet": " 44:     per_comparison = Column(String(50))",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '20' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 48,
+        "end_line": 48,
+        "start_col": 33,
+        "end_col": 35
+      },
+      "snippet": " 48:     shares_trend = Column(String(20))",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '50' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 65,
+        "end_line": 65,
+        "start_col": 32,
+        "end_col": 34
+      },
+      "snippet": " 65:     market_name = Column(String(50))",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '20' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 71,
+        "end_line": 71,
+        "start_col": 27,
+        "end_col": 29
+      },
+      "snippet": " 71:     ticker = Column(String(20), primary_key=True)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '365' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 97,
+        "end_line": 97,
+        "start_col": 43,
+        "end_col": 46
+      },
+      "snippet": " 97:     start_date = end_date - timedelta(days=365 * 5)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '40' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 125,
+        "end_line": 125,
+        "start_col": 31,
+        "end_col": 33
+      },
+      "snippet": "125:     if percentage_difference > 40:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 127,
+        "end_line": 127,
+        "start_col": 33,
+        "end_col": 35
+      },
+      "snippet": "127:     elif percentage_difference > 30:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '20' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 129,
+        "end_line": 129,
+        "start_col": 33,
+        "end_col": 35
+      },
+      "snippet": "129:     elif percentage_difference > 20:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '20' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 135,
+        "end_line": 135,
+        "start_col": 35,
+        "end_col": 37
+      },
+      "snippet": "135:     elif percentage_difference >= -20:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 137,
+        "end_line": 137,
+        "start_col": 35,
+        "end_col": 37
+      },
+      "snippet": "137:     elif percentage_difference >= -30:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '40' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 139,
+        "end_line": 139,
+        "start_col": 35,
+        "end_col": 37
+      },
+      "snippet": "139:     elif percentage_difference >= -40:",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '365' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 148,
+        "end_line": 148,
+        "start_col": 43,
+        "end_col": 46
+      },
+      "snippet": "148:     start_date = end_date - timedelta(days=365 * years)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '365' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 172,
+        "end_line": 172,
+        "start_col": 43,
+        "end_col": 46
+      },
+      "snippet": "172:     start_date = end_date - timedelta(days=365 * years)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '12' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 327,
+        "end_line": 327,
+        "start_col": 74,
+        "end_col": 76
+      },
+      "snippet": "327:             shares = balance_sheet.loc[\"Ordinary Shares Number\", f\"{year}-12-31\"]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '365' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 566,
+        "end_line": 566,
+        "start_col": 43,
+        "end_col": 46
+      },
+      "snippet": "566:     start_date = end_date - timedelta(days=365 * years)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '537' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 905,
+        "end_line": 905,
+        "start_col": 77,
+        "end_col": 80
+      },
+      "snippet": "905:         \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36\"",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '32' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1051,
+        "end_line": 1051,
+        "start_col": 44,
+        "end_col": 46
+      },
+      "snippet": "1051:         (dataframe[\"fcf_roc_avg_4_years\"] > 32).astype(int)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '18' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1052,
+        "end_line": 1052,
+        "start_col": 43,
+        "end_col": 45
+      },
+      "snippet": "1052:         + (dataframe[\"cagr_fcf_4_years\"] > 18).astype(int)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '82' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1053,
+        "end_line": 1053,
+        "start_col": 39,
+        "end_col": 41
+      },
+      "snippet": "1053:         + (dataframe[\"r2_5_years\"] > 0.82).astype(int)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '32' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1054,
+        "end_line": 1054,
+        "start_col": 49,
+        "end_col": 51
+      },
+      "snippet": "1054:         + (dataframe[\"fcf_margin_avg_4_years\"] > 32).astype(int)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '18' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1055,
+        "end_line": 1055,
+        "start_col": 39,
+        "end_col": 41
+      },
+      "snippet": "1055:         + (dataframe[\"roic_current\"] > 18).astype(int)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '72' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1060,
+        "end_line": 1060,
+        "start_col": 56,
+        "end_col": 58
+      },
+      "snippet": "1060:     filtered_df = dataframe[dataframe[\"r2_5_years\"] > 0.72]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '83' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1089,
+        "end_line": 1089,
+        "start_col": 19,
+        "end_col": 21
+      },
+      "snippet": "1089:             x, [(0.83, \"LimeGreen\"), (0.77, \"LightGreen\"), (0.70, \"Khaki\")]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '83' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1092,
+        "end_line": 1092,
+        "start_col": 19,
+        "end_col": 21
+      },
+      "snippet": "1092:             x, [(0.83, \"LimeGreen\"), (0.77, \"LightGreen\"), (0.70, \"Khaki\")]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '32' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1094,
+        "end_line": 1094,
+        "start_col": 62,
+        "end_col": 64
+      },
+      "snippet": "1094:         \"fcf_roc_avg_4_years\": lambda x: highlight_cells(x, [(32, \"LimeGreen\")]),",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '32' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1096,
+        "end_line": 1096,
+        "start_col": 65,
+        "end_col": 67
+      },
+      "snippet": "1096:         \"fcf_margin_avg_4_years\": lambda x: highlight_cells(x, [(32, \"LimeGreen\")]),",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '18' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1098,
+        "end_line": 1098,
+        "start_col": 17,
+        "end_col": 19
+      },
+      "snippet": "1098:             x, [(18, \"LimeGreen\"), (15, \"LightGreen\"), (10, \"Khaki\")]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '18' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 1101,
+        "end_line": 1101,
+        "start_col": 17,
+        "end_col": 19
+      },
+      "snippet": "1101:             x, [(18, \"LimeGreen\"), (15, \"LightGreen\"), (10, \"Khaki\")]",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_83",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 85,
+        "end_line": 89,
+        "start_col": 8,
+        "end_col": 13
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_84",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 196,
+        "end_line": 197,
+        "start_col": 4,
+        "end_col": 22
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_85",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 201,
+        "end_line": 202,
+        "start_col": 4,
+        "end_col": 26
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_86",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 206,
+        "end_line": 207,
+        "start_col": 4,
+        "end_col": 24
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_87",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 211,
+        "end_line": 212,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_88",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 216,
+        "end_line": 217,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_89",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 232,
+        "end_line": 233,
+        "start_col": 8,
+        "end_col": 26
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_90",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 237,
+        "end_line": 238,
+        "start_col": 8,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_91",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 242,
+        "end_line": 243,
+        "start_col": 8,
+        "end_col": 28
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_92",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 247,
+        "end_line": 248,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_93",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 252,
+        "end_line": 253,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_94",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 329,
+        "end_line": 330,
+        "start_col": 8,
+        "end_col": 43
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_95",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 479,
+        "end_line": 480,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_96",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 514,
+        "end_line": 516,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_97",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 528,
+        "end_line": 530,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_98",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 542,
+        "end_line": 544,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_99",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 557,
+        "end_line": 559,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_100",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 684,
+        "end_line": 698,
+        "start_col": 12,
+        "end_col": 21
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_101",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 754,
+        "end_line": 756,
+        "start_col": 4,
+        "end_col": 58
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_102",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 85,
+        "end_line": 89,
+        "start_col": 8,
+        "end_col": 13
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_103",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 196,
+        "end_line": 197,
+        "start_col": 4,
+        "end_col": 22
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_104",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 201,
+        "end_line": 202,
+        "start_col": 4,
+        "end_col": 26
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_105",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 206,
+        "end_line": 207,
+        "start_col": 4,
+        "end_col": 24
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_106",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 211,
+        "end_line": 212,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_107",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 216,
+        "end_line": 217,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_108",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 232,
+        "end_line": 233,
+        "start_col": 8,
+        "end_col": 26
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_109",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 237,
+        "end_line": 238,
+        "start_col": 8,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_110",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 242,
+        "end_line": 243,
+        "start_col": 8,
+        "end_col": 28
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_111",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 247,
+        "end_line": 248,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_112",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 252,
+        "end_line": 253,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_113",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 329,
+        "end_line": 330,
+        "start_col": 8,
+        "end_col": 43
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_114",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 479,
+        "end_line": 480,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_115",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 514,
+        "end_line": 516,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_116",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 528,
+        "end_line": 530,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_117",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 542,
+        "end_line": 544,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_118",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 557,
+        "end_line": 559,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_119",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 684,
+        "end_line": 698,
+        "start_col": 12,
+        "end_col": 21
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_120",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Canada/app.py",
+        "start_line": 754,
+        "end_line": 756,
+        "start_col": 4,
+        "end_col": 58
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 54,
+        "end_line": 54,
+        "start_col": 17,
+        "end_col": 40
+      },
+      "snippet": " 52:         with open(output_path, \"w\") as f:\n 53:             for ticker in tickers:\n 54:                 f.write(\"%s\\n\" % ticker)\n 55:     except Exception as e:\n 56:         print(f\"Error al escribir en el archivo: {e}\")\n 57: ",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "bug_122",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 14,
+        "end_line": 16,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_123",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 29,
+        "end_line": 31,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_124",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 32,
+        "end_line": 34,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_125",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 55,
+        "end_line": 56,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_126",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 14,
+        "end_line": 16,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_127",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 29,
+        "end_line": 31,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_128",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 32,
+        "end_line": 34,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_129",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/x-Markets/Japon/separador.py",
+        "start_line": 55,
+        "end_line": 56,
+        "start_col": 4,
+        "end_col": 54
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 50,
+        "end_line": 50,
+        "start_col": 17,
+        "end_col": 59
+      },
+      "snippet": " 48:             dir_path = os.path.join(module_path, dir_name)\n 49:             if not os.path.exists(dir_path):\n 50:                 missing_dirs.append(f\"{module}/{dir_name}\")\n 51: \n 52:         if missing_dirs:\n 53:             print(f\"❌ Directorios faltantes: {missing_dirs}\")",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 181,
+        "end_line": 181,
+        "start_col": 45,
+        "end_col": 47
+      },
+      "snippet": "181:                 assert 3 <= len(username) <= 30",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '300' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 374,
+        "end_line": 374,
+        "start_col": 46,
+        "end_col": 49
+      },
+      "snippet": "374:             print(\"  ✅ FASE 2: Market Data (1,300+ líneas migradas)\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '480' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 375,
+        "end_line": 375,
+        "start_col": 50,
+        "end_col": 53
+      },
+      "snippet": "375:             print(\"  ✅ FASE 3: Investment Alerts (480+ líneas migradas)\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_134",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 119,
+        "end_line": 121,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_135",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 191,
+        "end_line": 193,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_136",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 268,
+        "end_line": 270,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_137",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 311,
+        "end_line": 313,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_138",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 345,
+        "end_line": 347,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_139",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 383,
+        "end_line": 385,
+        "start_col": 4,
+        "end_col": 15
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_140",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 119,
+        "end_line": 121,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_141",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 191,
+        "end_line": 193,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_142",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 268,
+        "end_line": 270,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_143",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 311,
+        "end_line": 313,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_144",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 345,
+        "end_line": 347,
+        "start_col": 4,
+        "end_col": 20
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_145",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/integration/test_phase_4_integration.py",
+        "start_line": 383,
+        "end_line": 385,
+        "start_col": 4,
+        "end_col": 15
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 47,
+        "end_line": 47,
+        "start_col": 17,
+        "end_col": 66
+      },
+      "snippet": " 45:             sub_path = os.path.join(top_path, subdir)\n 46:             if not os.path.exists(sub_path):\n 47:                 missing_components.append(f\"{top_level}/{subdir}\")\n 48: \n 49:     if missing_components:\n 50:         print(f\"❌ Componentes de arquitectura faltantes: {missing_components}\")",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 406,
+        "end_line": 406,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "406:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '400' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 415,
+        "end_line": 415,
+        "start_col": 51,
+        "end_col": 54
+      },
+      "snippet": "415:             \"Company Analysis + User Management (1,400+ líneas)\",",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '40' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 422,
+        "end_line": 422,
+        "start_col": 39,
+        "end_col": 41
+      },
+      "snippet": "422:         print(f\"{phase}: {description:<40} {status}\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '200' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 438,
+        "end_line": 438,
+        "start_col": 41,
+        "end_col": 44
+      },
+      "snippet": "438:     print(\"  • Total líneas migradas: ~3,200+\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '16' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 441,
+        "end_line": 441,
+        "start_col": 30,
+        "end_col": 32
+      },
+      "snippet": "441:     print(\"  • Endpoints API: 16\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '800' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 444,
+        "end_line": 444,
+        "start_col": 42,
+        "end_col": 45
+      },
+      "snippet": "444:     print(\"  • Mejora en mantenibilidad: +800%\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 460,
+        "end_line": 460,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "460:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 462,
+        "end_line": 462,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "462:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 495,
+        "end_line": 495,
+        "start_col": 23,
+        "end_col": 25
+      },
+      "snippet": "495:     print(\"\\n\" + \"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 497,
+        "end_line": 497,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "497:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '30' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 502,
+        "end_line": 502,
+        "start_col": 33,
+        "end_col": 35
+      },
+      "snippet": "502:         print(f\"{result['test']:<30} {status} {duration}\")",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 507,
+        "end_line": 507,
+        "start_col": 23,
+        "end_col": 25
+      },
+      "snippet": "507:     print(\"\\n\" + \"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 529,
+        "end_line": 529,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "529:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '70' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 531,
+        "end_line": 531,
+        "start_col": 16,
+        "end_col": 18
+      },
+      "snippet": "531:     print(\"=\" * 70)",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_161",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 489,
+        "end_line": 492,
+        "start_col": 8,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_162",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 547,
+        "end_line": 549,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_163",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 489,
+        "end_line": 492,
+        "start_col": 8,
+        "end_col": 30
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_164",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/tests/e2e/test_hexagonal_system_e2e.py",
+        "start_line": 547,
+        "end_line": 549,
+        "start_col": 4,
+        "end_col": 19
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "deep-nesting",
+      "severity": "major",
+      "message": "Anidación profunda (>3 niveles) detectada. Considera extraer guard clauses o funciones auxiliares.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 93,
+        "end_line": 93,
+        "start_col": 17,
+        "end_col": 51
+      },
+      "snippet": " 91:             try:\n 92:                 # Añadir correlation ID al header de respuesta\n 93:                 response = await call_next(request)\n 94:                 response.headers[\"X-Correlation-ID\"] = correlation_id\n 95: \n 96:                 # Registrar éxito",
+      "rationale": "La anidación profunda incrementa la carga cognitiva y dificulta pruebas unitarias.",
+      "remediation_minutes": 24,
+      "tags": [
+        "maintainability",
+        "complexity",
+        "readability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": {
+        "where": "any",
+        "condition": "indent_level >= 4",
+        "severity": "major",
+        "remediation_per_unit_min": 8,
+        "unit": "levels_over_3"
+      }
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '500' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 165,
+        "end_line": 165,
+        "start_col": 28,
+        "end_col": 31
+      },
+      "snippet": "165:                 status_code=500,",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '429' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 194,
+        "end_line": 194,
+        "start_col": 24,
+        "end_col": 27
+      },
+      "snippet": "194:             status_code=429,",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '503' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 218,
+        "end_line": 218,
+        "start_col": 24,
+        "end_col": 27
+      },
+      "snippet": "218:             status_code=503,",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '400' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 242,
+        "end_line": 242,
+        "start_col": 22,
+        "end_col": 25
+      },
+      "snippet": "242:         status_code = 400 if error.is_permanent else 503",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '400' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 270,
+        "end_line": 270,
+        "start_col": 24,
+        "end_col": 27
+      },
+      "snippet": "270:             status_code=400,",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "02d",
+      "rule": "magic-number",
+      "severity": "minor",
+      "message": "Número mágico '500' detectado.",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 321,
+        "end_line": 321,
+        "start_col": 24,
+        "end_col": 27
+      },
+      "snippet": "321:             status_code=500,",
+      "rationale": "Los números mágicos deben ser constantes nombradas.",
+      "remediation_minutes": 6,
+      "tags": [
+        "style",
+        "maintainability"
+      ],
+      "confidence": 1.0,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_172",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 105,
+        "end_line": 107,
+        "start_col": 12,
+        "end_col": 75
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_173",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 156,
+        "end_line": 175,
+        "start_col": 8,
+        "end_col": 13
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_174",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: Exception",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 346,
+        "end_line": 347,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_175",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 408,
+        "end_line": 422,
+        "start_col": 8,
+        "end_col": 17
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_176",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 105,
+        "end_line": 107,
+        "start_col": 12,
+        "end_col": 75
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_177",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 156,
+        "end_line": 175,
+        "start_col": 8,
+        "end_col": 13
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_178",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: Exception",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 346,
+        "end_line": 347,
+        "start_col": 8,
+        "end_col": 23
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    },
+    {
+      "id": "bug_179",
+      "rule": "bug_broad_exception_catch",
+      "severity": "major",
+      "message": "Broad exception catching: None",
+      "position": {
+        "path": "/Users/torrefacto/Documents/Repos/Stock-app-svelte/shared/middleware/advanced_error_middleware.py",
+        "start_line": 408,
+        "end_line": 422,
+        "start_col": 8,
+        "end_col": 17
+      },
+      "snippet": "Catching broad exceptions can hide specific errors",
+      "rationale": "Catching broad exceptions can hide specific errors.",
+      "remediation_minutes": 15,
+      "tags": [
+        "bug",
+        "broad_exception_catch"
+      ],
+      "confidence": 0.8,
+      "language": "python",
+      "rule_snapshot": null
+    }
+  ],
+  "entities_analysis": [
+    {
+      "id": "fn:process_payment",
+      "kind": "function",
+      "name": "process_payment",
+      "signature": "(user: User, order: Order, *, retry: int = 0) -> Receipt",
+      "public": true,
+      "start_line": 162,
+      "end_line": 257,
+      "loc": 96,
+      "params": 3,
+      "return_type": "Receipt",
+      "metrics": {
+        "cyclomatic": 17,
+        "cognitive": 55,
+        "halstead_volume": 2279.4,
+        "nesting_depth": 5,
+        "doc_present": true
+      },
+      "smells": [
+        "deep-nesting",
+        "long-function"
+      ]
+    }
+  ]
+}
