@@ -1,0 +1,340 @@
+# CodeQ Advanced Rules Configuration
+# Version: 2.0.0
+# Enhanced with ML-based detection, multi-language support, and advanced metrics
+
+metadata:
+  version: "2.0.0"
+  name: "CodeQ Advanced Rules"
+  description: "Advanced code quality rules with ML-enhanced detection"
+  languages: ["python", "typescript", "javascript", "go", "rust", "java", "csharp", "cpp", "php", "ruby", "swift", "kotlin", "scala"]
+  supported_extensions: [".py", ".ts", ".tsx", ".js", ".jsx", ".go", ".rs", ".java", ".cs", ".cpp", ".cc", ".hpp", ".php", ".rb", ".swift", ".kt", ".scala"]
+
+  # Advanced features
+  features:
+    ml_detection: true
+    trend_analysis: true
+    caching: true
+    parallel_processing: true
+    incremental_analysis: true
+    ci_integration: true
+  
+# Global settings
+global:
+  tech_debt_hourly_rate: 50  # €/hour for debt calculation
+  severity_weights:
+    critical: 10
+    major: 5
+    minor: 2
+    info: 1
+
+  # Performance settings
+  performance:
+    max_workers: 4
+    cache_size: 1000
+    cache_ttl_hours: 24
+    max_file_size_mb: 10
+    timeout_seconds: 300
+
+  # Analysis settings
+  analysis:
+    enable_incremental: true
+    enable_caching: true
+    enable_ml_detection: true
+    enable_trend_analysis: true
+    enable_dependency_analysis: true
+
+  # Reporting settings
+  reporting:
+    output_formats: ["json", "html", "sarif"]
+    generate_badges: true
+    include_trends: true
+    include_recommendations: true
+    max_issues_per_file: 50
+
+  # CI/CD integration
+  ci:
+    fail_on_quality_gate: true
+    quality_gate_threshold: 70
+    upload_sarif: true
+    generate_pr_comments: true
+    post_github_checks: true
+
+# Complexity metrics
+complexity:
+  cyclomatic:
+    thresholds:
+      low: 5
+      medium: 10
+      high: 20
+      very_high: 50
+    remediation_minutes: 30  # per point above threshold
+    severity: major
+    
+  cognitive:
+    thresholds:
+      low: 7
+      medium: 15
+      high: 25
+    remediation_minutes: 20
+    severity: major
+    
+  halstead:
+    volume_threshold: 1000
+    difficulty_threshold: 30
+    effort_threshold: 100000
+    remediation_minutes: 45
+    severity: minor
+
+# Maintainability Index (SEI formula)
+maintainability:
+  bands:
+    A: {min: 85, max: 100}   # Highly maintainable
+    B: {min: 65, max: 85}    # Moderately maintainable
+    C: {min: 0, max: 65}     # Low maintainability
+  fail_below: 40
+  severity: major
+  remediation_minutes: 120
+
+# Code smells
+smells:
+  long_function:
+    max_lines: 50
+    max_statements: 30
+    severity: minor
+    remediation_minutes: 60
+    
+  long_file:
+    max_lines: 500
+    severity: minor
+    remediation_minutes: 90
+    
+  too_many_parameters:
+    max_params: 5
+    severity: minor
+    remediation_minutes: 30
+    
+  deep_nesting:
+    max_depth: 4
+    severity: major
+    remediation_minutes: 45
+    
+  god_class:
+    max_methods: 20
+    max_lines: 750
+    severity: major
+    remediation_minutes: 240
+    
+  data_class:
+    min_methods: 3  # Classes with <3 methods and mostly getters/setters
+    severity: minor
+    remediation_minutes: 60
+    
+  magic_numbers:
+    ignore: [0, 1, -1, 2, 10, 100, 1000]
+    severity: info
+    remediation_minutes: 5
+    
+  duplicate_code:
+    min_tokens: 50
+    min_lines: 6
+    threshold_percent: 5  # Flag if >5% duplication
+    severity: major
+    remediation_minutes: 120
+
+# Coupling metrics
+coupling:
+  fan_out:
+    max_dependencies: 20
+    severity: minor
+    remediation_minutes: 90
+    
+  fan_in:
+    max_dependents: 50
+    severity: info
+    remediation_minutes: 0  # Informational only
+    
+  instability:
+    threshold: 0.8  # I = Ce/(Ca+Ce)
+    severity: minor
+    remediation_minutes: 120
+
+# Documentation
+documentation:
+  min_coverage_percent: 60
+  public_api_coverage: 80  # Higher for public APIs
+  severity: minor
+  remediation_minutes: 15  # per undocumented function
+  
+  comment_ratio:
+    min_percent: 10
+    max_percent: 40  # Too many comments = smell
+    severity: info
+    remediation_minutes: 10
+
+# Testing
+testing:
+  min_coverage_percent: 70
+  test_ratio: 0.8  # tests/production ratio
+  severity: major
+  remediation_minutes: 60  # per uncovered branch
+
+
+# Advanced ML-based detection
+ml_detection:
+  enabled: true
+  models:
+    smell_classifier:
+      algorithm: "xgboost"
+      features: ["complexity", "lines", "params", "nesting", "duplication"]
+      threshold: 0.8
+      training_data_size: 10000
+
+
+  # Confidence levels for ML predictions
+  confidence_levels:
+    high: 0.9
+    medium: 0.7
+    low: 0.5
+
+# Trend analysis configuration
+trends:
+  enabled: true
+  window_days: 30
+  metrics:
+    - complexity_score
+    - maintainability_score
+    - test_coverage_score
+    - total_debt_hours
+
+  forecasting:
+    enabled: true
+    algorithm: "prophet"
+    forecast_days: 90
+    seasonality: "weekly"
+
+# Advanced metrics configuration
+advanced_metrics:
+  halstead:
+    enabled: true
+    volume_threshold: 1000
+    difficulty_threshold: 30
+    effort_threshold: 100000
+
+  object_oriented:
+    enabled: true
+    lcom_variants: ["henderson_sellers", "chidamber_kemerer"]
+    dit_threshold: 5  # Depth of Inheritance Tree
+    noc_threshold: 10  # Number of Children
+
+  coupling:
+    enabled: true
+    fan_out_threshold: 20
+    instability_threshold: 0.8
+    abstractness_threshold: 0.3
+
+# Performance optimization
+performance:
+  caching:
+    enabled: true
+    strategy: "lru"
+    max_size_mb: 500
+    ttl_hours: 24
+
+  parallelization:
+    enabled: true
+    max_workers: 4
+    chunk_size: 100
+
+  incremental:
+    enabled: true
+    check_git_diff: true
+    max_changed_files: 50
+
+# Quality gates with advanced conditions
+quality_gates:
+  enabled: true
+  conditions:
+    - name: "Overall Quality"
+      metric: "overall_score"
+      operator: ">="
+      threshold: 70
+      severity: "error"
+
+
+    - name: "Test Coverage"
+      metric: "test_coverage_score"
+      operator: ">="
+      threshold: 70
+      severity: "warning"
+
+    - name: "Technical Debt"
+      metric: "total_debt_hours"
+      operator: "<="
+      threshold: 100
+      severity: "warning"
+
+  # Advanced composite conditions
+  composite:
+    - name: "Critical Issues"
+      condition: "critical_issues == 0"
+      severity: "error"
+
+    - name: "Trend Check"
+      condition: "quality_trend != 'declining'"
+      severity: "warning"
+
+# CI/CD integration settings
+ci_integration:
+  github:
+    enabled: true
+    upload_sarif: true
+    generate_checks: true
+    pr_comments: true
+    status_checks: true
+
+  gitlab:
+    enabled: true
+    upload_sarif: true
+    merge_request_reports: true
+
+  jenkins:
+    enabled: true
+    upload_reports: true
+    set_build_status: true
+
+# Language-specific overrides
+overrides:
+  python:
+    complexity:
+      cyclomatic:
+        thresholds:
+          low: 5
+          medium: 10
+          high: 15  # Python tends to be more concise
+
+  typescript:
+    smells:
+      long_function:
+        max_lines: 75  # Allow longer due to type annotations
+      too_many_parameters:
+        max_params: 7  # Common in constructors with DI
+
+  java:
+    complexity:
+      cyclomatic:
+        thresholds:
+          low: 8
+          medium: 15
+          high: 25  # Java tends to be more verbose
+
+  cpp:
+    smells:
+      long_function:
+        max_lines: 100  # C++ can have longer functions
+      nesting:
+        max_depth: 6  # Allow deeper nesting for performance-critical code
+
+# Custom rules for specific projects
+custom_rules:
+  enabled: false
+  rules: []
